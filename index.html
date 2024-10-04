@@ -56,6 +56,26 @@
             background-color: #ddd;
             color: #333;
         }
+                .navbar-toggler {
+            display: none;
+            background-color: #444;
+            border: none;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .navbar-toggler-icon {
+            display: inline-block;
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        .navbar-collapse {
+            display: flex;
+        }
 
         .info-bar {
             background: #ffeb3b;
@@ -193,21 +213,30 @@
             border-radius: 5px;
             color: #000;
         }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            header h2 {
-                font-size: 1rem;
-            }
-
+             @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-collapse {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar-collapse.show {
+                display: flex;
             }
 
             .navbar a {
+                width: 100%;
                 padding: 10px;
+                text-align: left;
             }
 
             main {
@@ -230,6 +259,7 @@
                 margin: 0.5rem 0;
             }
         }
+
     </style>
 </head>
 
@@ -239,49 +269,27 @@
         <h2>論五分埔的當代價值性，為五分埔設計故事集與故事地圖</h2>
     </header>
     <nav class="navbar">
+          <input type="checkbox" id="navbar-toggle" class="navbar-toggler">
+        <label for="navbar-toggle" class="navbar-toggler-icon"></label>
         <div class="navbar-collapse">
-            <a href="#home" data-target="home">首頁</a>
-            <a href="#back" data-target="back">前言</a>
-            <a href="#question" data-target="question">問題意識</a>
-            <a href="#history" data-target="history">歷史脈絡</a>
-            <a href="#current" data-target="current">現況分析</a>
-            <a href="#socialconnect" data-target="socialconnect">社會連結與社會共鳴</a>
-            <a href="#citycomp" data-target="citycomp">五分埔都更爭議</a>
-            <a href="#solutions" data-target="solutions">解決方案</a>
-            <a href="#design" data-target="design">執行過程設計</a>
-            <a href="#resources" data-target="resources">參考文獻及論文</a>
-            <a href="#team" data-target="team">團隊成員</a>
-            <a href="#contact" data-target="contact">聯絡我們</a>
-        </div>
+        <a href="#home" data-target="home">首頁</a>
+        <a href="#back" data-target="back">前言</a>
+        <a href="#question" data-target="question">問題意識</a>
+        <a href="#history" data-target="history">歷史脈絡</a>
+        <a href="#current" data-target="current">現況分析</a>
+        <a href="#socialconnect" data-target="socialconnect">社會連結與社會共鳴</a>
+        <a href="#citycomp" data-target="citycomp">五分埔都更爭議</a>
+        <a href="#solutions" data-target="solutions">解決方案</a>
+        <a href="#design" data-target="design">執行過程設計</a>
+        <a href="#resources" data-target="resources">參考文獻及論文</a>
+        <a href="#team" data-target="team">團隊成員</a>
+        <a href="#contact" data-target="contact">聯絡我們</a>
     </nav>
     <div class="info-bar">
         <p>最新消息: 專題網頁測試中！</p>
     </div>
-
-<body>
-    <header>
-        <h1>社會教育專題實習</h1>
-        <h2>論五分埔的當代價值性，為五分埔設計故事集與故事地圖</h2>
-    </header>
-    <nav class="navbar">
-        <div class="navbar-collapse">
-            <a href="#home" data-target="home">首頁</a>
-            <a href="#back" data-target="back">前言</a>
-            <a href="#question" data-target="question">問題意識</a>
-            <a href="#history" data-target="history">歷史脈絡</a>
-            <a href="#current" data-target="current">現況分析</a>
-            <a href="#socialconnect" data-target="socialconnect">社會連結與社會共鳴</a>
-            <a href="#citycomp" data-target="citycomp">五分埔都更爭議</a>
-            <a href="#solutions" data-target="solutions">解決方案</a>
-            <a href="#design" data-target="design">執行過程設計</a>
-            <a href="#resources" data-target="resources">參考文獻及論文</a>
-            <a href="#team" data-target="team">團隊成員</a>
-            <a href="#contact" data-target="contact">聯絡我們</a>
-        </div>
-    </nav>
-    <div class="info-bar">
-        <p>最新消息: 專題網頁測試中！</p>
-    </div>
+</body>
+</html>
 <main>
     <section id="home" class="active">
         <h2>首頁</h2>
