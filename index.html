@@ -193,6 +193,43 @@
             border-radius: 5px;
             color: #000;
         }
+                @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header h2 {
+                font-size: 1rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                padding: 10px;
+            }
+
+            main {
+                width: calc(100% - 1rem);
+                margin: 1rem;
+            }
+
+            section {
+                width: calc(100% - 2rem);
+                padding: 1rem;
+            }
+
+            .team {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-member {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+                      }
 
     </style>
 </head>
