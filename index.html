@@ -314,7 +314,14 @@
                 width: 100%;
                 margin: 0.5rem 0;
             }
-        }
+            .video, .image {
+                width: 100%;
+                transition: transform 0.3s ease;
+            }
+            .image:hover {
+                transform: scale(1.1);
+
+            }
     </style>
 </head>
 
@@ -336,6 +343,7 @@
         <a href="#resources" data-target="resources">參考文獻及論文</a>
         <a href="#team" data-target="team">團隊成員</a>
         <a href="#contact" data-target="contact">聯絡我們</a>
+        <a href="#media" data-target="media">影音專區 
     </nav>
     <div class="info-bar">
         <p>最新消息: 專題網頁測試中！</p>
@@ -656,6 +664,21 @@
                     } else {
                         section.classList.remove('active');
                     }
+                    
+    <div class="container">
+        <div class="section" id="videos">
+            <h2>影片專區</h2>
+            <video class="video" id="video1" controls>
+                <source src="movie.mp4" type="video/mp4">
+                您的瀏覽器不支援 HTML5 視頻標籤。
+            </video>
+        </div>
+        <div class="section" id="images">
+            <h2>圖片專區</h2>
+            <img src="image.jpg" alt="Example Image" class="image">
+        </div>
+    </div>
+    <script src="scripts.js">
                 });
             });
         });
