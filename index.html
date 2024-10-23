@@ -314,13 +314,34 @@
                 width: 100%;
                 margin: 0.5rem 0;
             }
-            .video, .image {
-                width: 100%;
+          .video-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .video,
+            .image {
+                width: 30%;
                 transition: transform 0.3s ease;
             }
+
+            .video-container .video {
+                width: calc(50% - 10px);
+            }
+
+            .image-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .image-container .image {
+                width: calc(33.333% - 10px);
+            }
+
             .image:hover {
                 transform: scale(1.1);
-
             }
     </style>
 </head>
@@ -628,6 +649,33 @@
         </div>
     </section>
     <section id="contact">
+         <section id="media">
+            <div class="container">
+                <div class="section" id="videos">
+                    <h2>影片專區</h2>
+                    <video width="160" height="120" controls>
+                        <source src="https://github.com/user-attachments/assets/493f346f-841a-4ee2-a83e-8f36463dce25" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                    <video width="160" height="120" controls>
+                        <source src="https://github.com/user-attachments/assets/1fe0eb4f-b814-48f3-8d2a-bda6b85fdb54" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="section" id="images">
+                    <h2>圖片專區</h2>
+                    <img src="https://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/LINE_ALBUM_1011_241023_9.jpg" width="10%">
+                    <img src="https://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/LINE_ALBUM_1011_241023_8.jpg" width="10%">
+                    <img src="https://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/LINE_ALBUM_1011_241023_2.jpg" width="10%">
+                    <img src="phttps://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/1.jpg" width="10%">
+                    <img src="https://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/2.jpg" width="10%">
+                    <img src="https://github.com/JCW-WANG/Wu-Fen-Pu/blob/644f4bd846c82b2c7d974e19e2c9c1036f92b798/photo/5.jpg" width="10%">
+                </div>
+                <script src="scripts.js"></script>
+            </div>
+        </section>
         <h2>聯絡我們</h2>
         <form>
             <label for="name">姓名:</label>
@@ -665,20 +713,6 @@
                         section.classList.remove('active');
                     }
                     
-    <div class="container">
-        <div class="section" id="videos">
-            <h2>影片專區</h2>
-            <video class="video" id="video1" controls>
-                <source src="movie.mp4" type="video/mp4">
-                您的瀏覽器不支援 HTML5 視頻標籤。
-            </video>
-        </div>
-        <div class="section" id="images">
-            <h2>圖片專區</h2>
-            <img src="image.jpg" alt="Example Image" class="image">
-        </div>
-    </div>
-    <script src="scripts.js">
                 });
             });
         });
