@@ -86,15 +86,15 @@
             transition: transform 0.3s ease;
         }
 
-        #navbar-toggle:checked + .navbar-toggler-icon {
+        #navbar-toggle:checked+.navbar-toggler-icon {
             transform: rotate(45deg);
         }
 
-        #navbar-toggle:checked + .navbar-toggler-icon::before {
+        #navbar-toggle:checked+.navbar-toggler-icon::before {
             transform: rotate(90deg) translateX(-10px);
         }
 
-        #navbar-toggle:checked + .navbar-toggler-icon::after {
+        #navbar-toggle:checked+.navbar-toggler-icon::after {
             transform: rotate(90deg) translateX(10px);
         }
 
@@ -242,7 +242,8 @@
         .responsive-map {
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
             position: relative;
         }
 
@@ -314,7 +315,8 @@
                 width: 100%;
                 margin: 0.5rem 0;
             }
-          .video-container {
+
+            .video-container {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
@@ -343,6 +345,7 @@
             .image:hover {
                 transform: scale(1.1);
             }
+            
     </style>
 </head>
 
@@ -648,7 +651,6 @@
             </div>
         </div>
     </section>
-    <section id="contact">
          <section id="media">
             <div class="container">
                 <div class="section" id="videos">
