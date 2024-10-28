@@ -12,6 +12,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </head>
+    <script>
+    function change_toy(obj) {
+        obj.style.opacity = "1.0";
+        document.getElementById("viewer").src = obj.src;
+        document.getElementById("viewer").style.visibility = "visible";
+    }
+
+    function recover_toy(obj) {
+        obj.style.opacity = "0.3";
+        document.getElementById("viewer").style.visibility = "hidden";
+    }
+
+</script>
+
 <body>
     <header>
         <h1>社會教育專題實習</h1>
