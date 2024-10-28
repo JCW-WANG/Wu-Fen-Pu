@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五分埔知識王遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #quiz-container {
+            margin-top: 20px;
+        }
+
+        #options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .option:hover {
+            background: #0056b3;
+        }
+
+        #feedback {
+            margin-top: 20px;
+        }
+
+        #score-container {
+            margin-top: 20px;
+        }
+
+        #next-btn {
+            padding: 10px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #next-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>五分埔知識王遊戲</h1>
+        <div id="quiz-container">
+            <div id="question"></div>
+            <div id="options">
+                <button class="option" onclick="checkAnswer(0)">選項1</button>
+                <button class="option" onclick="checkAnswer(1)">選項2</button>
+                <button class="option" onclick="checkAnswer(2)">選項3</button>
+                <button class="option" onclick="checkAnswer(3)">選項4</button>
+            </div>
+            <div id="feedback"></div>
+        </div>
+        <div id="score-container">
+            <p id="score"></p>
+        </div>
+        <button id="next-btn" onclick="nextQuestion()" style="display: none;">下一題</button>
+    </div>
+    <script>
+        const questions = [
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        window.onload = function() {
+            showQuestion();
+        }
+
+        function showQuestion() {
+            let questionElement = document.getElementById('question');
+            let optionsElements = document.querySelectorAll('.option');
+
+            questionElement.textContent = questions[currentQuestionIndex].question;
+
+            optionsElements.forEach((optionElement, index) => {
+                optionElement.textContent = questions[currentQuestionIndex].options[index];
+                optionElement.disabled = false;
+            });
+
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('next-btn').style.display = 'none';
+        }
+
+        function checkAnswer(selectedOption) {
+            let optionsElements = document.querySelectorAll('.option');
+
+            if (selectedOption === questions[currentQuestionIndex].correctAnswer) {
+                score++;
+                document.getElementById('feedback').textContent = '正確！';
+            } else {
+                document.getElementById('feedback').textContent = '錯誤！正確答案是：' + questions[currentQuestionIndex].options[questions[currentQuestionIndex].correctAnswer];
+            }
+
+            optionsElements.forEach(optionElement => {
+                optionElement.disabled = true; 
+            });
+
+            document.getElementById('score').textContent = `你的分數是：${score} / ${questions.length}`;
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                document.getElementById('quiz-container').innerHTML = `<h2>遊戲結束！</h2><p>你的最終分數是：${score} / ${questions.length}</p>`;
+                document.getElementById('next-btn').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
