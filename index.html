@@ -1,353 +1,383 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="五分埔專題實習網站，介紹五分埔的歷史、現狀及未來發展方案。">
     <title>五分埔的當代價值性</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+</head>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-        }
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        overflow-x: hidden;
+    }
 
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    header {
+        background: #333;
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
 
-        header h2 {
-            margin: 0;
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #ccc;
-        }
+    header h2 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #ccc;
+    }
 
+    .navbar {
+        display: flex;
+        justify-content: center;
+        background-color: #444;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a {
+        color: #fff;
+        padding: 15px 20px;
+        text-decoration: none;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: #333;
+    }
+
+    .navbar-toggler {
+        display: none;
+        background-color: #444;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: transform 0.3s ease;
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon {
+        transform: rotate(45deg);
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon::before {
+        transform: rotate(90deg) translateX(-10px);
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon::after {
+        transform: rotate(90deg) translateX(10px);
+    }
+
+    .navbar-collapse {
+        display: flex;
+    }
+
+    .info-bar {
+        background: #ffeb3b;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+        position: relative;
+        width: calc(100% - 2rem);
+        height: 300vh;
+        margin: 2rem;
+        padding: 10px;
+        border: 0.5px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    section {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: calc(100% - 4rem);
+        height: 100%;
+        background: #fff;
+        padding: 2rem;
+        box-sizing: border-box;
+        transition: left 0.5s ease-in-out;
+    }
+
+    section.active {
+        left: 0;
+    }
+
+    footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+        margin: 0.5rem 0 0.2rem;
+    }
+
+    form input,
+    form textarea {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form button {
+        padding: 0.7rem;
+        border: none;
+        background: #333;
+        color: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background: #555;
+    }
+
+    .team {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        width: 200px;
+    }
+
+    .team-member img {
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+    }
+
+    .team-member h3 {
+        margin: 0;
+    }
+
+    .team-member p {
+        margin: 0.5rem 0 0;
+        text-align: center;
+    }
+
+    .hover-effect {
+        display: inline-block;
+        padding: 0.7rem;
+        background: #fff;
+        color: #000;
+        border-radius: 10px;
+        transition: transform 0.3s ease, background 0.3s ease;
+        cursor: pointer;
+    }
+
+    .hover-effect:hover {
+        transform: translateY(-10px);
+        background: #f0f0f0;
+    }
+
+    .highlight {
+        background-color: #ffeb3b;
+        padding: 10px;
+        border-radius: 5px;
+        color: #000;
+    }
+
+    .responsive-map {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        /* 16:9 aspect ratio */
+        position: relative;
+    }
+
+    .responsive-map iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .responsive-img {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
         .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar a {
-            color: #fff;
-            padding: 15px 20px;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: #333;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .navbar-toggler {
-            display: none;
-            background-color: #444;
-            border: none;
-            color: #fff;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .navbar-toggler-icon {
-            display: inline-block;
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            margin: 5px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
             display: block;
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            margin: 5px 0;
-            transition: transform 0.3s ease;
-        }
-
-        #navbar-toggle:checked+.navbar-toggler-icon {
-            transform: rotate(45deg);
-        }
-
-        #navbar-toggle:checked+.navbar-toggler-icon::before {
-            transform: rotate(90deg) translateX(-10px);
-        }
-
-        #navbar-toggle:checked+.navbar-toggler-icon::after {
-            transform: rotate(90deg) translateX(10px);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
         }
 
         .navbar-collapse {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: #444;
+            position: absolute;
+            top: 3rem;
+            left: 0;
+            z-index: 1;
+        }
+
+        .navbar-collapse.show {
             display: flex;
         }
 
-        .info-bar {
-            background: #ffeb3b;
+        .navbar a {
+            width: 100%;
             padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
         main {
-            position: relative;
-            width: calc(100% - 2rem);
-            height: 300vh;
-            margin: 2rem;
-            padding: 10px;
-            border: 0.5px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
+            width: calc(100% - 1rem);
+            margin: 1rem;
         }
 
         section {
-            position: absolute;
-            top: 0;
-            left: 100%;
-            width: calc(100% - 4rem);
-            height: 100%;
-            background: #fff;
-            padding: 2rem;
-            box-sizing: border-box;
-            transition: left 0.5s ease-in-out;
-        }
-
-        section.active {
-            left: 0;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        form label {
-            margin: 0.5rem 0 0.2rem;
-        }
-
-        form input,
-        form textarea {
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        form button {
-            padding: 0.7rem;
-            border: none;
-            background: #333;
-            color: #fff;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background: #555;
+            width: calc(100% - 2rem);
+            padding: 1rem;
         }
 
         .team {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
         }
 
         .team-member {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .video-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 1rem;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .video,
+        .image {
+            width: 30%;
             transition: transform 0.3s ease;
-            width: 200px;
         }
 
-        .team-member img {
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: cover;
+        .video-container .video {
+            width: calc(50% - 10px);
         }
 
-        .team-member:hover {
-            transform: scale(1.05);
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .team-member h3 {
-            margin: 0;
+        .image-container .image {
+            width: calc(33.333% - 10px);
         }
 
-        .team-member p {
-            margin: 0.5rem 0 0;
-            text-align: center;
+        .image:hover {
+            transform: scale(1.1);
         }
 
-        .hover-effect {
-            display: inline-block;
-            padding: 0.7rem;
-            background: #fff;
-            color: #000;
-            border-radius: 10px;
-            transition: transform 0.3s ease, background 0.3s ease;
-            cursor: pointer;
+        .toy {
+            width: 100px;
+            height: 100px;
+            opacity: 0.3;
         }
 
-        .hover-effect:hover {
-            transform: translateY(-10px);
-            background: #f0f0f0;
+        .show {
+            width: 300px;
+            height: 300px;
+            visibility: hidden;
         }
 
-        .highlight {
-            background-color: #ffeb3b;
-            padding: 10px;
-            border-radius: 5px;
-            color: #000;
-        }
+</style>
+<script>
+    function change_toy(obj) {
+        obj.style.opacity = "1.0";
+        document.getElementById("viewer").src = obj.src;
+        document.getElementById("viewer").style.visibility = "visible";
+    }
 
-        .responsive-map {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            /* 16:9 aspect ratio */
-            position: relative;
-        }
+    function recover_toy(obj) {
+        obj.style.opacity = "0.3";
+        document.getElementById("viewer").style.visibility = "hidden";
+    }
 
-        .responsive-map iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .responsive-img {
-            width: 100%;
-            height: auto;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar-toggler {
-                display: block;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                z-index: 2;
-            }
-
-            .navbar-collapse {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: #444;
-                position: absolute;
-                top: 3rem;
-                left: 0;
-                z-index: 1;
-            }
-
-            .navbar-collapse.show {
-                display: flex;
-            }
-
-            .navbar a {
-                width: 100%;
-                padding: 10px;
-                text-align: left;
-            }
-
-            main {
-                width: calc(100% - 1rem);
-                margin: 1rem;
-            }
-
-            section {
-                width: calc(100% - 2rem);
-                padding: 1rem;
-            }
-
-            .team {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .team-member {
-                width: 100%;
-                margin: 0.5rem 0;
-            }
-
-            .video-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .video,
-            .image {
-                width: 30%;
-                transition: transform 0.3s ease;
-            }
-
-            .video-container .video {
-                width: calc(50% - 10px);
-            }
-
-            .image-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .image-container .image {
-                width: calc(33.333% - 10px);
-            }
-
-            .image:hover {
-                transform: scale(1.1);
-            }
-            
-    </style>
-</head>
+</script>
 <body>
     <header>
         <h1>社會教育專題實習</h1>
@@ -662,14 +692,20 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div class="section" id="images">
+                <div class="container">
                     <h2>圖片專區</h2>
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_2.jpg" width="10%">
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_8.jpg" width="10%">
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_6.jpg" width="10%">
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/1.jpg" width="10%">
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/2.jpg" width="10%">
-                    <img src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/5.jpg" width="10%">
+                <p>
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_2.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_8.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/LINE_ALBUM_1011_241023_6.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/1.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/2.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                    <img id="toy1" src="https://raw.githubusercontent.com/JCW-WANG/Wu-Fen-Pu/refs/heads/main/photo/5.jpg" width="10%" class=" toy img-thumbnail" onmouseenter="change_toy(this)" onmouseleave="recover_toy(this)">
+                </p>
+                    <hr>
+                    <p align="center">
+                    <img id="viewer" src="./%E8%83%A1%E8%BF%AA.png" class="show img-thumbnail">
+                    </p>
                 </div>
                 <script src="scripts.js"></script>
             </div>
