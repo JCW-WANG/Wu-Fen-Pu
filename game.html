@@ -6,72 +6,76 @@
     <title>五分埔知識王遊戲</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
-
         .container {
             text-align: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 600px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 650px;
         }
-
         h1 {
             color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
         }
-
         #quiz-container {
             margin-top: 20px;
         }
-
         #options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
-
         .option {
-            padding: 10px;
+            padding: 15px;
             border: none;
-            background: #007bff;
+            background: #6a11cb;
+            background: -webkit-linear-gradient(to right, #2575fc, #6a11cb);
+            background: linear-gradient(to right, #2575fc, #6a11cb);
             color: #fff;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: transform 0.2s;
         }
-
         .option:hover {
-            background: #0056b3;
+            transform: scale(1.05);
         }
-
         #feedback {
             margin-top: 20px;
+            font-size: 1.2em;
         }
-
         #score-container {
             margin-top: 20px;
         }
-
         #next-btn {
-            padding: 10px;
-            background: #28a745;
+            padding: 15px;
+            background: #2ecc71;
             color: #fff;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1.1em;
             margin-top: 20px;
+            transition: background 0.3s;
         }
-
         #next-btn:hover {
-            background: #218838;
+            background: #27ae60;
+        }
+        #timer {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #e74c3c;
         }
     </style>
 </head>
@@ -80,6 +84,7 @@
         <h1>五分埔知識王遊戲</h1>
         <div id="quiz-container">
             <div id="question"></div>
+            <div id="timer"></div>
             <div id="options">
                 <button class="option" onclick="checkAnswer(0)">選項1</button>
                 <button class="option" onclick="checkAnswer(1)">選項2</button>
@@ -95,11 +100,35 @@
     </div>
     <script>
         const questions = [
-           
+            {
+                question: "請問榮彥最喜歡在五分埔做甚麼?",
+                options: ["吸吸管", "賽馬", "買衣服", "上廁所"],
+                correctAnswer: 3,
+                fact: "五分埔是榮彥喝完絲襪奶茶最喜歡上廁所的地方。"
+            },
+            {
+                question: "請問 29studio 是甚麼風格?",
+                options: ["日式", "台式", "民視", "華視"],
+                correctAnswer: 0,
+                fact: "29studio 是屬於日式風格的服飾店。"
+            },
+            {
+                question: "五分埔的歷史可以追溯到哪一年?",
+                options: ["1990年", "1980年", "1970年", "1960年"],
+                correctAnswer: 2,
+                fact: "五分埔的發展始於1970年代，主要是服裝批發和零售。"
+            },
+            {
+                question: "五分埔最繁忙的時間是什麼時候?",
+                options: ["早上", "下午", "晚上", "半夜"],
+                correctAnswer: 2,
+                fact: "五分埔的晚上最為繁忙，特別是週末。"
+            }
         ];
-
         let currentQuestionIndex = 0;
         let score = 0;
+        let timeLeft = 15;
+        let timer;
 
         window.onload = function() {
             showQuestion();
@@ -108,39 +137,55 @@
         function showQuestion() {
             let questionElement = document.getElementById('question');
             let optionsElements = document.querySelectorAll('.option');
-
+            let timerElement = document.getElementById('timer');
+            
             questionElement.textContent = questions[currentQuestionIndex].question;
-
             optionsElements.forEach((optionElement, index) => {
                 optionElement.textContent = questions[currentQuestionIndex].options[index];
                 optionElement.disabled = false;
             });
-
+            
             document.getElementById('feedback').textContent = '';
             document.getElementById('next-btn').style.display = 'none';
+            timeLeft = 15;
+            timerElement.textContent = `時間剩下：${timeLeft}秒`;
+            clearInterval(timer);
+            timer = setInterval(countdown, 1000);
+        }
+
+        function countdown() {
+            let timerElement = document.getElementById('timer');
+            timeLeft--;
+            timerElement.textContent = `時間剩下：${timeLeft}秒`;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                checkAnswer(-1); // -1 means time's up
+            }
         }
 
         function checkAnswer(selectedOption) {
             let optionsElements = document.querySelectorAll('.option');
+            clearInterval(timer);
 
             if (selectedOption === questions[currentQuestionIndex].correctAnswer) {
                 score++;
                 document.getElementById('feedback').textContent = '正確！';
+                new Audio('correct-sound.mp3').play();
             } else {
                 document.getElementById('feedback').textContent = '錯誤！正確答案是：' + questions[currentQuestionIndex].options[questions[currentQuestionIndex].correctAnswer];
+                new Audio('incorrect-sound.mp3').play();
             }
 
+            document.getElementById('feedback').textContent += ` ${questions[currentQuestionIndex].fact}`;
             optionsElements.forEach(optionElement => {
-                optionElement.disabled = true; 
+                optionElement.disabled = true;
             });
-
             document.getElementById('score').textContent = `你的分數是：${score} / ${questions.length}`;
             document.getElementById('next-btn').style.display = 'block';
         }
 
         function nextQuestion() {
             currentQuestionIndex++;
-
             if (currentQuestionIndex < questions.length) {
                 showQuestion();
             } else {
@@ -151,3 +196,4 @@
     </script>
 </body>
 </html>
+
