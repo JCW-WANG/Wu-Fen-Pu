@@ -1,1 +1,348 @@
+body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        overflow-x: hidden;
+    }
 
+    header {
+        background: #333;
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    header h2 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #ccc;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        background-color: #444;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a {
+        color: #fff;
+        padding: 15px 20px;
+        text-decoration: none;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: #333;
+    }
+
+    .navbar-toggler {
+        display: none;
+        background-color: #444;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: transform 0.3s ease;
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon {
+        transform: rotate(45deg);
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon::before {
+        transform: rotate(90deg) translateX(-10px);
+    }
+
+    #navbar-toggle:checked+.navbar-toggler-icon::after {
+        transform: rotate(90deg) translateX(10px);
+    }
+
+    .navbar-collapse {
+        display: flex;
+    }
+
+    .info-bar {
+        background: #ffeb3b;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+        position: relative;
+        width: calc(100% - 2rem);
+        height: 300vh;
+        margin: 2rem;
+        padding: 10px;
+        border: 0.5px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    section {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: calc(100% - 4rem);
+        height: 100%;
+        background: #fff;
+        padding: 2rem;
+        box-sizing: border-box;
+        transition: left 0.5s ease-in-out;
+    }
+
+    section.active {
+        left: 0;
+    }
+
+    footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+        margin: 0.5rem 0 0.2rem;
+    }
+
+    form input,
+    form textarea {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form button {
+        padding: 0.7rem;
+        border: none;
+        background: #333;
+        color: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background: #555;
+    }
+
+    .team {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        width: 200px;
+    }
+
+    .team-member img {
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+    }
+
+    .team-member h3 {
+        margin: 0;
+    }
+
+    .team-member p {
+        margin: 0.5rem 0 0;
+        text-align: center;
+    }
+
+    .hover-effect {
+        display: inline-block;
+        padding: 0.7rem;
+        background: #fff;
+        color: #000;
+        border-radius: 10px;
+        transition: transform 0.3s ease, background 0.3s ease;
+        cursor: pointer;
+    }
+
+    .hover-effect:hover {
+        transform: translateY(-10px);
+        background: #f0f0f0;
+    }
+
+    .highlight {
+        background-color: #ffeb3b;
+        padding: 10px;
+        border-radius: 5px;
+        color: #000;
+    }
+
+    .responsive-map {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+    }
+
+    .responsive-map iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .responsive-img {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .navbar-toggler {
+            display: block;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
+        }
+
+        .navbar-collapse {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: #444;
+            position: absolute;
+            top: 3rem;
+            left: 0;
+            z-index: 1;
+        }
+
+        .navbar-collapse.show {
+            display: flex;
+        }
+
+        .navbar a {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+        }
+
+        main {
+            width: calc(100% - 1rem);
+            margin: 1rem;
+        }
+
+        section {
+            width: calc(100% - 2rem);
+            padding: 1rem;
+        }
+
+        .team {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-member {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .video,
+        .image {
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .video-container .video {
+            width: calc(50% - 10px);
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .image-container .image {
+            width: calc(33.333% - 10px);
+        }
+
+        .image:hover {
+            transform: scale(1.1);
+        }
+
+        .toy {
+            width: 100px;
+            height: 100px;
+            opacity: 0.3;
+        }
+
+        .show {
+            width: 300px;
+            height: 300px;
+            visibility: hidden;
+        }
